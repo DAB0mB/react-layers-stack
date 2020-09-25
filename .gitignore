@@ -1,0 +1,4 @@
+lib
+node_modules
+src/**/*.test.ts
+yarn-error.log

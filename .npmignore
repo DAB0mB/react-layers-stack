@@ -1,0 +1,4 @@
+**
+!lib/**/*
+!index.js
+!mock.js
