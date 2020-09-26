@@ -3,26 +3,28 @@ import './Layer.css';
 import React from 'react';
 import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-sandwich-navigation';
 
-const EggplantLayer = () => {
+const CheeseLayer = () => {
   useWillFocusListener(() => {
-    console.log('Incoming Eggplant!');
+    console.log('Incoming Cheese!');
   }, []);
 
   useDidFocusListener(() => {
-    console.log('Hello Eggplant!');
+    console.log('Hello Cheese!');
   }, []);
 
   useWillBlurListener(() => {
-    console.log('Outgoing Eggplant!');
+    console.log('Outgoing Cheese!');
   }, []);
 
   useDidBlurListener(() => {
-    console.log('Bye Eggplant!');
-  });
+    console.log('Bye Cheese!');
+  }, []);
 
   return (
-    <div className='Layer'>Eggplant</div>
+    <div className='Layer'>
+      <img src={require('../assets/cheese.png')} />
+    </div>
   );
 };
 
-export default EggplantLayer;
+export default CheeseLayer;

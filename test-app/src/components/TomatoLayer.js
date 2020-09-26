@@ -18,10 +18,12 @@ const TomatoLayer = () => {
 
   useDidBlurListener(() => {
     console.log('Bye Tomato!');
-  });
+  }, []);
 
   return (
-    <div className='Layer'>Tomato</div>
+    <div className='Layer'>
+      <img src={require('../assets/tomato.png')} />
+    </div>
   );
 };
 

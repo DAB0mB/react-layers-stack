@@ -18,10 +18,12 @@ const OnionLayer = () => {
 
   useDidBlurListener(() => {
     console.log('Bye Onion!');
-  });
+  }, []);
 
   return (
-    <div className='Layer'>Onion</div>
+    <div className='Layer'>
+      <img src={require('../assets/onion.png')} />
+    </div>
   );
 };
 

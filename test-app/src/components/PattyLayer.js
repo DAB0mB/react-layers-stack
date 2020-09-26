@@ -18,10 +18,12 @@ const PattyLayer = () => {
 
   useDidBlurListener(() => {
     console.log('Bye Patty!');
-  });
+  }, []);
 
   return (
-    <div className='Layer'>Patty</div>
+    <div className='Layer'>
+      <img src={require('../assets/patty.png')} />
+    </div>
   );
 };
 

@@ -18,10 +18,12 @@ const BunLayer = () => {
 
   useDidBlurListener(() => {
     console.log('Bye Bottom Bun!');
-  });
+  }, []);
 
   return (
-    <div className='Layer'>Bottom Bun</div>
+    <div className='Layer'>
+      <img src={require('../assets/bottom-bun.png')} />
+    </div>
   );
 };
 

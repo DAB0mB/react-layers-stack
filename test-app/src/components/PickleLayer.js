@@ -3,26 +3,28 @@ import './Layer.css';
 import React from 'react';
 import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-sandwich-navigation';
 
-const AvocadoLayer = () => {
+const PickleLayer = () => {
   useWillFocusListener(() => {
-    console.log('Incoming Avocado!');
+    console.log('Incoming Pickle!');
   }, []);
 
   useDidFocusListener(() => {
-    console.log('Hello Avocado!');
+    console.log('Hello Pickle!');
   }, []);
 
   useWillBlurListener(() => {
-    console.log('Outgoing Avocado!');
+    console.log('Outgoing Pickle!');
   }, []);
 
   useDidBlurListener(() => {
-    console.log('Bye Avocado!');
-  });
+    console.log('Bye Pickle!');
+  }, []);
 
   return (
-    <div className='Layer'>Avocado</div>
+    <div className='Layer'>
+      <img src={require('../assets/pickle.png')} />
+    </div>
   );
 };
 
-export default AvocadoLayer;
+export default PickleLayer;

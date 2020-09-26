@@ -4,15 +4,14 @@ import React, { useCallback, useState } from 'react';
 import { Sandwich, createLayer, usePushLayer } from 'react-sandwich-navigation';
 
 import BottomBunLayer from './components/BottomBunLayer';
-import PattyLayer from './components/PattyLayer';
+import CheeseLayer from './components/CheeseLayer';
 import LettuceLayer from './components/LettuceLayer';
 import OnionLayer from './components/OnionLayer';
+import PattyLayer from './components/PattyLayer';
+import PickleLayer from './components/PickleLayer';
 import TomatoLayer from './components/TomatoLayer';
-import MushroomLayer from './components/MushroomLayer';
-import EggplantLayer from './components/EggplantLayer';
-import AvocadoLayer from './components/AvocadoLayer';
 import TopBunLayer from './components/TopBunLayer';
-import ResetLayer from './components/ResetLayer';
+import DoneLayer from './components/DoneLayer';
 
 const App = () => {
   const [layers, setLayers] = useState([
@@ -49,11 +48,11 @@ const App = () => {
                 setlayerIndex(3);
 
                 return pushLayer(
-                  <LettuceLayer />
+                  <CheeseLayer />
                 , {
                   keyframes: [
-                    { left: '-100%' },
-                    { left: '0' },
+                    { right: '-100%' },
+                    { right: '0' },
                   ],
                   timing: {
                     duration: 500
@@ -64,7 +63,7 @@ const App = () => {
                 setlayerIndex(4);
 
                 return pushLayer(
-                  <OnionLayer />
+                  <TomatoLayer />
                 , {
                   keyframes: [
                     { left: '-100%' },
@@ -79,11 +78,11 @@ const App = () => {
                 setlayerIndex(5);
 
                 return pushLayer(
-                  <TomatoLayer />
+                  <PickleLayer />
                 , {
                   keyframes: [
-                    { left: '-100%' },
-                    { left: '0' },
+                    { right: '-100%' },
+                    { right: '0' },
                   ],
                   timing: {
                     duration: 500
@@ -94,7 +93,7 @@ const App = () => {
                 setlayerIndex(6);
 
                 return pushLayer(
-                  <MushroomLayer />
+                  <OnionLayer />
                 , {
                   keyframes: [
                     { left: '-100%' },
@@ -109,11 +108,11 @@ const App = () => {
                 setlayerIndex(7);
 
                 return pushLayer(
-                  <EggplantLayer />
+                  <LettuceLayer />
                 , {
                   keyframes: [
-                    { left: '-100%' },
-                    { left: '0' },
+                    { right: '-100%' },
+                    { right: '0' },
                   ],
                   timing: {
                     duration: 500
@@ -124,11 +123,11 @@ const App = () => {
                 setlayerIndex(8);
 
                 return pushLayer(
-                  <AvocadoLayer />
+                  <TopBunLayer />
                 , {
                   keyframes: [
-                    { left: '-100%' },
-                    { left: '0' },
+                    { top: '-100%' },
+                    { top: '0' },
                   ],
                   timing: {
                     duration: 500
@@ -139,22 +138,7 @@ const App = () => {
                 setlayerIndex(9);
 
                 return pushLayer(
-                  <TopBunLayer />
-                , {
-                  keyframes: [
-                    { left: '-100%' },
-                    { left: '0' },
-                  ],
-                  timing: {
-                    duration: 500
-                  },
-                });
-
-              case 9:
-                setlayerIndex(10);
-
-                return pushLayer(
-                  <ResetLayer />
+                  <DoneLayer />
                 , {
                   keyframes: [
                     { opacity: 0 },
@@ -164,11 +148,12 @@ const App = () => {
                     duration: 500
                   },
                   mask: {
-                    background: '#000',
+                    background: '#fff',
+                    opacity: 1,
                   },
                 });
 
-              case 10:
+              case 9:
                 setlayerIndex(1);
 
                 setLayers([

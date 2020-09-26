@@ -1,12 +1,12 @@
 import './Layer.css';
+import './DoneLayer.css';
 
 import React from 'react';
 
 const DoneLayer = () => {
   return (
-    <div className='Layer'>
-      <div>Hamburger is ready!</div>
-      <div>Click to reset</div>
+    <div className='Layer DoneLayer'>
+      <div>react-layers-stack</div>
     </div>
   );
 };

@@ -3,26 +3,28 @@ import './Layer.css';
 import React from 'react';
 import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-sandwich-navigation';
 
-const LattuceLayer = () => {
+const LettuceLayer = () => {
   useWillFocusListener(() => {
-    console.log('Incoming Lattuce!');
+    console.log('Incoming Lettuce!');
   }, []);
 
   useDidFocusListener(() => {
-    console.log('Hello Lattuce!');
+    console.log('Hello Lettuce!');
   }, []);
 
   useWillBlurListener(() => {
-    console.log('Outgoing Lattuce!');
+    console.log('Outgoing Lettuce!');
   }, []);
 
   useDidBlurListener(() => {
-    console.log('Bye Lattuce!');
-  });
+    console.log('Bye Lettuce!');
+  }, []);
 
   return (
-    <div className='Layer'>Lattuce</div>
+    <div className='Layer'>
+      <img src={require('../assets/lettuce.png')} />
+    </div>
   );
 };
 
-export default LattuceLayer;
+export default LettuceLayer;
