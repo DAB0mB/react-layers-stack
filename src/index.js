@@ -1,14 +1,13 @@
 export * from './contexts/LayerContext';
 export * from './contexts/SandwichContext';
+export * from './components/Layer';
 
 import React, { useMemo, useState } from 'react';
 
 import { SandwichProvider } from './contexts/SandwichContext';
 
-const Sandwich = ({ style, className, children }) => {
-  const layersState = useState([]);
-  const [layers] = layersState;
-  const sandwich = layers.map(layer => layer.render());
+export const Sandwich = ({ layersState, style, className, children }) => {
+  const [layers, setLayers] = layersState ?? useState([]);
 
   useMemo(() => {
     let styleEl = document.getElementById('rsn-style');
@@ -47,10 +46,12 @@ const Sandwich = ({ style, className, children }) => {
   }, []);
 
   return (
-    <SandwichProvider layersState={layersState}>
-      <div style={style} className={['rsn-stack', className].filter(Boolean)}>
-        {typeof children == 'function' ? children(sandwich) : sandwich}
-      </div>
+    <SandwichProvider layersState={[layers, setLayers]}>
+      {sandwich => (
+        <div style={style} className={['rsn-stack', className].filter(Boolean)}>
+          {typeof children == 'function' ? children(sandwich) : sandwich}
+        </div>
+      )}
     </SandwichProvider>
   );
 };

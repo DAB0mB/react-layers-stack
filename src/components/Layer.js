@@ -11,7 +11,7 @@ const Layer = forwardRef((props, ref) => {
 
 Layer.displayName = 'Layer';
 
-export const createLayer = (children, index, { keyframes, overlay, timing } = {}) => {
+export const createLayer = (children, { keyframes, mask, timing } = {}) => {
   const layerRef = createRef();
   const maskRef = createRef();
   const childrenRef = createRef();
@@ -35,13 +35,13 @@ export const createLayer = (children, index, { keyframes, overlay, timing } = {}
     </React.Fragment>
   );
 
-  const transition = function* ({ direction, keyframes, overlay = {}, timing }) {
+  const transition = function* ({ direction, keyframes, mask = {}, timing }) {
     const resolutions = [];
 
     {
-      const layer = layerRef.current;
+      const layerEl = layerRef.current;
 
-      const animation = layer.animate(keyframes, {
+      const animation = layerEl.animate(keyframes, {
         ...timing,
         direction,
         fill: 'forwards',
@@ -51,14 +51,14 @@ export const createLayer = (children, index, { keyframes, overlay, timing } = {}
     }
 
     {
-      const mask = maskRef.current;
+      const maskEl = maskRef.current;
 
       const keyframes = [
-        { ...overlay, opacity: 0 },
-        { ...overlay, opacity: overlay.opacity ?? .5 },
+        { ...mask, opacity: 0 },
+        { ...mask, opacity: mask.opacity ?? .5 },
       ];
 
-      const animation = mask.animate(keyframes, {
+      const animation = maskEl.animate(keyframes, {
         ...timing,
         direction,
         fill: 'forwards',
@@ -81,7 +81,7 @@ export const createLayer = (children, index, { keyframes, overlay, timing } = {}
       direction: args.direction ?? 'reverse',
       keyframes: args.keyframes ?? keyframes,
       timing: args.timing ?? timing,
-      overlay: args.overlay ?? overlay,
+      mask: args.mask ?? mask,
     });
 
     listeners.didBlur.forEach(listener => listener());
@@ -99,7 +99,7 @@ export const createLayer = (children, index, { keyframes, overlay, timing } = {}
       direction: args.direction ?? 'normal',
       keyframes: args.keyframes ?? keyframes,
       timing: args.timing ?? timing,
-      overlay: args.overlay ?? overlay,
+      mask: args.mask ?? mask,
     });
 
     prevLayer?.listeners.didBlur.forEach(listener => listener());
@@ -108,6 +108,7 @@ export const createLayer = (children, index, { keyframes, overlay, timing } = {}
 
   return {
     render,
+    listeners,
     transitionIn,
     transitionOut,
   };

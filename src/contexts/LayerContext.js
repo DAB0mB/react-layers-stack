@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useContext, useMemo, useLayoutEffect } from 'react';
 
 const LayerContext = createContext();
 
@@ -20,34 +20,54 @@ const Children = ({ children, context }) => {
   return children;
 };
 
-export const useWillFocusListener = (listener) => {
+export const useWillFocusListener = (listener, input) => {
   const { listeners } = useContext(LayerContext);
 
-  useMemo(() => {
+  useLayoutEffect(() => {
     listeners.willFocus.push(listener);
-  }, []);
+
+    return () => {
+      const index = listeners.willFocus.indexOf(listener);
+      listeners.willFocus.splice(index, 1);
+    };
+  }, input);
 };
 
-export const useDidFocusListener = (listener) => {
+export const useDidFocusListener = (listener, input) => {
   const { listeners } = useContext(LayerContext);
 
-  useMemo(() => {
+  useLayoutEffect(() => {
     listeners.didFocus.push(listener);
-  }, []);
+
+    return () => {
+      const index = listeners.didFocus.indexOf(listener);
+      listeners.didFocus.splice(index, 1);
+    };
+  }, input);
 };
 
-export const useWillBlurListener = (listener) => {
+export const useWillBlurListener = (listener, input) => {
   const { listeners } = useContext(LayerContext);
 
-  useMemo(() => {
+  useLayoutEffect(() => {
     listeners.willBlur.push(listener);
-  }, []);
+
+    return () => {
+      const index = listeners.willBlur.indexOf(listener);
+      listeners.willBlur.splice(index, 1);
+    };
+  }, input);
 };
 
-export const useDidBlurListener = (listener) => {
+export const useDidBlurListener = (listener, input) => {
   const { listeners } = useContext(LayerContext);
 
-  useMemo(() => {
+  useLayoutEffect(() => {
     listeners.didBlur.push(listener);
-  }, []);
+
+    return () => {
+      const index = listeners.didBlur.indexOf(listener);
+      listeners.didBlur.splice(index, 1);
+    };
+  }, input);
 };

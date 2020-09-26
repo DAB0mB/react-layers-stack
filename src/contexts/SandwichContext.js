@@ -11,14 +11,14 @@ export const SandwichProvider = ({ children, layersState }) => {
 
   return (
     <SandwichContext.Provider value={context}>
-      <Children context={context}>{children}</Children>
+      <Children layersState={layersState}>{children}</Children>
     </SandwichContext.Provider>
   );
 };
 
-const Children = ({ children, context }) => {
+const Children = ({ children, layersState: [layers] }) => {
   if (typeof children == 'function') {
-    return children(context);
+    return children(layers.map(l => l.render()));
   }
 
   return children;
@@ -29,15 +29,16 @@ export const usePushLayer = () => {
 
   const { layersState: [layers, setLayers] } = useContext(SandwichContext);
 
-  const pushLayer = useAsyncCallback(function* (children, { keyframes, timing } = {}) {
-    const currLayer = createLayer(children, layers.length, { keyframes, timing });
+  const pushLayer = useAsyncCallback(function* (children, { keyframes, timing, mask } = {}) {
+    const currLayer = createLayer(children, { keyframes, timing, mask });
+    const prevLayer = layers[layers.length - 1];
 
     // Might have been popped by someone else
     setLayers((layers) => {
       return [...layers, currLayer];
     });
 
-    yield* currLayer.transitionIn();
+    yield* currLayer.transitionIn(prevLayer);
   }, [layers]);
 
   return pushLayer;
@@ -46,10 +47,11 @@ export const usePushLayer = () => {
 export const usePopLayer = () => {
   const { layersState: [layers, setLayers] } = useContext(SandwichContext);
 
-  const popLayer = useAsyncCallback(function* ({ keyframes, timing } = {}) {
+  const popLayer = useAsyncCallback(function* ({ keyframes, timing, mask } = {}) {
     const currLayer = layers[layers.length - 1];
+    const prevLayer = layers[layers.length - 2];
 
-    yield* currLayer.transitionOut(keyframes, timing);
+    yield* currLayer.transitionOut(prevLayer, { keyframes, timing, mask });
 
     // Might have been popped by someone else
     setLayers((layers) => {

@@ -18,7 +18,18 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "indent": "off",
+      "no-async-promise-executor": "off",
+      "react/prop-types": "off",
+      "default-case": "off",
+      "react-hooks/rules-of-hooks": "off",
+      "linebreak-style": ["error", "unix"],
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"],
+      "brace-style": ["error", "stroustrup"]
+    }
   },
   "browserslist": {
     "production": [
