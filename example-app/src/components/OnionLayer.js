@@ -1,7 +1,14 @@
 import './Layer.css';
 
-import React from 'react';
-import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
+import React, { useCallback } from 'react';
+
+import {
+  useWillFocusListener,
+  useDidFocusListener,
+  useWillBlurListener,
+  useDidBlurListener,
+  usePushLayer,
+} from 'react-layers-stack';
 
 const OnionLayer = () => {
   useWillFocusListener(() => {
@@ -25,6 +32,24 @@ const OnionLayer = () => {
       <img alt='onion' src={require('../assets/onion.png')} />
     </div>
   );
+};
+
+OnionLayer.usePush = () => {
+  const pushLayer = usePushLayer();
+
+  return useCallback(() => {
+    pushLayer(
+      <OnionLayer />
+    , {
+      keyframes: [
+        { left: '-100%' },
+        { left: '0' },
+      ],
+      timing: {
+        duration: 500
+      },
+    });
+  }, [pushLayer]);
 };
 
 export default OnionLayer;

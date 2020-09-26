@@ -1,7 +1,14 @@
 import './Layer.css';
 
-import React from 'react';
-import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
+import React, { useCallback } from 'react';
+
+import {
+  useWillFocusListener,
+  useDidFocusListener,
+  useWillBlurListener,
+  useDidBlurListener,
+  usePushLayer,
+} from 'react-layers-stack';
 
 const PattyLayer = () => {
   useWillFocusListener(() => {
@@ -25,6 +32,24 @@ const PattyLayer = () => {
       <img alt='patty' src={require('../assets/patty.png')} />
     </div>
   );
+};
+
+PattyLayer.usePush = () => {
+  const pushLayer = usePushLayer();
+
+  return useCallback(() => {
+    pushLayer(
+      <PattyLayer />
+    , {
+      keyframes: [
+        { left: '-100%' },
+        { left: '0' },
+      ],
+      timing: {
+        duration: 500
+      },
+    });
+  }, [pushLayer]);
 };
 
 export default PattyLayer;

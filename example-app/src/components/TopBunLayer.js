@@ -1,7 +1,14 @@
 import './Layer.css';
 
-import React from 'react';
-import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
+import React, { useCallback } from 'react';
+
+import {
+  useWillFocusListener,
+  useDidFocusListener,
+  useWillBlurListener,
+  useDidBlurListener,
+  usePushLayer,
+} from 'react-layers-stack';
 
 const TopBunLayer = () => {
   useWillFocusListener(() => {
@@ -25,6 +32,24 @@ const TopBunLayer = () => {
       <img alt='top-bun' src={require('../assets/top-bun.png')} />
     </div>
   );
+};
+
+TopBunLayer.usePush = () => {
+  const pushLayer = usePushLayer();
+
+  return useCallback(() => {
+    pushLayer(
+      <TopBunLayer />
+    , {
+      keyframes: [
+        { top: '-100%' },
+        { top: '0' },
+      ],
+      timing: {
+        duration: 500
+      },
+    });
+  }, [pushLayer]);
 };
 
 export default TopBunLayer;

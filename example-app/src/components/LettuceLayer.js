@@ -1,7 +1,14 @@
 import './Layer.css';
 
-import React from 'react';
-import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
+import React, { useCallback } from 'react';
+
+import {
+  useWillFocusListener,
+  useDidFocusListener,
+  useWillBlurListener,
+  useDidBlurListener,
+  usePushLayer,
+} from 'react-layers-stack';
 
 const LettuceLayer = () => {
   useWillFocusListener(() => {
@@ -25,6 +32,24 @@ const LettuceLayer = () => {
       <img alt='lettuce' src={require('../assets/lettuce.png')} />
     </div>
   );
+};
+
+LettuceLayer.usePush = () => {
+  const pushLayer = usePushLayer();
+
+  return useCallback(() => {
+    pushLayer(
+      <LettuceLayer />
+    , {
+      keyframes: [
+        { right: '-100%' },
+        { right: '0' },
+      ],
+      timing: {
+        duration: 500
+      },
+    });
+  }, [pushLayer]);
 };
 
 export default LettuceLayer;

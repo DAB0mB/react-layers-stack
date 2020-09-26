@@ -1,7 +1,14 @@
 import './Layer.css';
 
-import React from 'react';
-import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
+import React, { useCallback } from 'react';
+
+import {
+  useWillFocusListener,
+  useDidFocusListener,
+  useWillBlurListener,
+  useDidBlurListener,
+  usePushLayer,
+} from 'react-layers-stack';
 
 const TomatoLayer = () => {
   useWillFocusListener(() => {
@@ -25,6 +32,24 @@ const TomatoLayer = () => {
       <img alt='tomato' src={require('../assets/tomato.png')} />
     </div>
   );
+};
+
+TomatoLayer.usePush = () => {
+  const pushLayer = usePushLayer();
+
+  return useCallback(() => {
+    pushLayer(
+      <TomatoLayer />
+    , {
+      keyframes: [
+        { left: '-100%' },
+        { left: '0' },
+      ],
+      timing: {
+        duration: 500
+      },
+    });
+  }, [pushLayer]);
 };
 
 export default TomatoLayer;

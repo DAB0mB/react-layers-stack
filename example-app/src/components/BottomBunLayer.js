@@ -1,17 +1,9 @@
 import './Layer.css';
 
 import React from 'react';
-import { useWillFocusListener, useDidFocusListener, useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
+import { useWillBlurListener, useDidBlurListener } from 'react-layers-stack';
 
 const BunLayer = () => {
-  useWillFocusListener(() => {
-    console.log('Incoming Bottom Bun!');
-  }, []);
-
-  useDidFocusListener(() => {
-    console.log('Hello Bottom Bun!');
-  }, []);
-
   useWillBlurListener(() => {
     console.log('Outgoing Bottom Bun!');
   }, []);
