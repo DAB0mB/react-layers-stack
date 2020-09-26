@@ -22,7 +22,7 @@ const TomatoLayer = () => {
 
   return (
     <div className='Layer'>
-      <img src={require('../assets/tomato.png')} />
+      <img alt='tomato' src={require('../assets/tomato.png')} />
     </div>
   );
 };

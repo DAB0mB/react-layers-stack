@@ -22,7 +22,7 @@ const PattyLayer = () => {
 
   return (
     <div className='Layer'>
-      <img src={require('../assets/patty.png')} />
+      <img alt='patty' src={require('../assets/patty.png')} />
     </div>
   );
 };

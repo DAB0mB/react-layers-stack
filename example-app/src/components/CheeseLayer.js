@@ -22,7 +22,7 @@ const CheeseLayer = () => {
 
   return (
     <div className='Layer'>
-      <img src={require('../assets/cheese.png')} />
+      <img alt='cheese' src={require('../assets/cheese.png')} />
     </div>
   );
 };

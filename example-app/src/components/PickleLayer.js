@@ -22,7 +22,7 @@ const PickleLayer = () => {
 
   return (
     <div className='Layer'>
-      <img src={require('../assets/pickle.png')} />
+      <img alt='pickle' src={require('../assets/pickle.png')} />
     </div>
   );
 };

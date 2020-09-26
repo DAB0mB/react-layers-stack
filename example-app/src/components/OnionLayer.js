@@ -22,7 +22,7 @@ const OnionLayer = () => {
 
   return (
     <div className='Layer'>
-      <img src={require('../assets/onion.png')} />
+      <img alt='onion' src={require('../assets/onion.png')} />
     </div>
   );
 };

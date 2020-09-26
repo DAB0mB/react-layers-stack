@@ -22,7 +22,7 @@ const BunLayer = () => {
 
   return (
     <div className='Layer'>
-      <img src={require('../assets/bottom-bun.png')} />
+      <img alt='bottom-bun' src={require('../assets/bottom-bun.png')} />
     </div>
   );
 };
