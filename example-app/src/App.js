@@ -1,7 +1,7 @@
 import './App.css';
 
 import React, { useCallback, useState } from 'react';
-import { Sandwich, createLayer, usePushLayer } from 'react-sandwich-navigation';
+import { Stack, createLayer, usePushLayer } from 'react-layers-stack';
 
 import BottomBunLayer from './components/BottomBunLayer';
 import CheeseLayer from './components/CheeseLayer';
@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Sandwich layersState={[layers, setLayers]}>
-        {sandwich => {
+      <Stack layersState={[layers, setLayers]}>
+        {stack => {
           const pushLayer = usePushLayer();
           const [layerIndex, setlayerIndex] = useState(1);
 
@@ -165,12 +165,12 @@ const App = () => {
           }, [layerIndex, pushLayer]);
 
           return (
-            <div className='App-sandwich' onClick={handleClick}>
-              {sandwich}
+            <div className='App-stack' onClick={handleClick}>
+              {stack}
             </div>
           );
         }}
-      </Sandwich>
+      </Stack>
     </div>
   );
 };

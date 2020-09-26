@@ -1,12 +1,12 @@
 {
-  "name": "react-sandwich-navigation",
-  "description": "Push and pop layers with transitions",
+  "name": "react-layers-stack",
+  "description": "Push and pop React view layers with transitions",
   "version": "0.1.0",
   "license": "MIT",
   "author": "DAB0mB",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dab0mb/react-sandwich-navigation.git"
+    "url": "git+ssh://git@github.com/dab0mb/react-layers-stack.git"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",

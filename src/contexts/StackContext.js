@@ -2,17 +2,17 @@ import React, { createContext, useContext, useMemo } from 'react';
 
 import { useAsyncCallback } from '../utils';
 
-const SandwichContext = createContext();
+const StackContext = createContext();
 
-export const SandwichProvider = ({ children, layersState }) => {
+export const StackProvider = ({ children, layersState }) => {
   const context = useMemo(() => ({
     layersState,
   }), [...layersState]);
 
   return (
-    <SandwichContext.Provider value={context}>
+    <StackContext.Provider value={context}>
       <Children layersState={layersState}>{children}</Children>
-    </SandwichContext.Provider>
+    </StackContext.Provider>
   );
 };
 
@@ -27,7 +27,7 @@ const Children = ({ children, layersState: [layers] }) => {
 export const usePushLayer = () => {
   const { createLayer } = require('../components/Layer');
 
-  const { layersState: [layers, setLayers] } = useContext(SandwichContext);
+  const { layersState: [layers, setLayers] } = useContext(StackContext);
 
   const pushLayer = useAsyncCallback(function* (children, { keyframes, timing, mask } = {}) {
     const currLayer = createLayer(children, { keyframes, timing, mask });
@@ -45,7 +45,7 @@ export const usePushLayer = () => {
 };
 
 export const usePopLayer = () => {
-  const { layersState: [layers, setLayers] } = useContext(SandwichContext);
+  const { layersState: [layers, setLayers] } = useContext(StackContext);
 
   const popLayer = useAsyncCallback(function* ({ keyframes, timing, mask } = {}) {
     const currLayer = layers[layers.length - 1];

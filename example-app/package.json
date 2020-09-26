@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-sandwich-navigation": "link:..",
+    "react-layers-stack": "link:..",
     "react-scripts": "3.4.3"
   },
   "scripts": {
@@ -25,10 +25,22 @@
       "react/prop-types": "off",
       "default-case": "off",
       "react-hooks/rules-of-hooks": "off",
-      "linebreak-style": ["error", "unix"],
-      "quotes": ["error", "single"],
-      "semi": ["error", "always"],
-      "brace-style": ["error", "stroustrup"]
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "brace-style": [
+        "error",
+        "stroustrup"
+      ]
     }
   },
   "browserslist": {
