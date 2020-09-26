@@ -11,7 +11,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "prepublishOnly": "yarn build",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "example": "cd example && yarn"
   },
   "peerDependencies": {
     "react": "16.8"
