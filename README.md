@@ -2,10 +2,12 @@
 
 ![react-layers-stack](https://circleci.com/gh/DAB0mB/react-layers-stack.svg)
 
-A React library for managing view layers using a stack data-structure. The library exposes easy and intuitive methods such as pop() and push() to manage the state of the stack. The unique factor of this library is that it's simple and light weight. It also uses [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) to manage transitions between layers, which makes it fast, and familiar. react-layers-stack is battle tested and is used by [LeO](https://www.meetleo.com/) regularly - a company that builds an AI based chat bot for the insurance industry. Here's a hamburger that is made 100% out of react-layers-stack:
+A React library for managing view layers using a stack data-structure. The library exposes easy and intuitive methods such as pop() and push() to manage the state of the stack. The unique factor of this library is that it's simple and light weight. It also uses [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) to manage transitions between layers, which makes it fast, and familiar. react-layers-stack is battle tested and is used by [LeO](https://www.meetleo.com/) regularly - a company that builds an AI based chat bot for the insurance industry. Here's a GIF that demonstrates a layout that was created 100% out of react-layers-stack:
+
+&nbsp;
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/7648874/94342277-b7ee6080-0018-11eb-9344-3cbe5bedcfdc.gif">
+  <img src="https://user-images.githubusercontent.com/7648874/94366813-3d3e4780-00e3-11eb-8b89-68a43b29661c.gif">
 </p>
 
 ### Differences with react-navigation
