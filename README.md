@@ -26,9 +26,9 @@ Modals, tabs, side menus, popovers, popups, dropdowns, notifications; These are 
 
 This library is currently only available for the web, and since it uses Web Animations API it's recommended to load a [polyfill](https://github.com/web-animations/web-animations-js) for comparability reasons with older browsers. This library is also very new and may have some missing features. Please, don't hesitate and open a ticket in the [issues](https://github.com/DAB0mB/react-layers-stack/issues) section if you encounter one, and I will address it as soon as I can.
 
-### Example
+### Examples
 
-This repo contains an example React app that can be initialized using `yarn example` and then run using `yarn example start`.
+This repo contains an example React apps under the [examples](/examples) dir. To run an example app, first make sure it's initialized by running `yarn` and then you can run it using `yarn start`.
 
 ### Installation
 

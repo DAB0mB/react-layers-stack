@@ -13,8 +13,7 @@
     "typecheck": "tsc",
     "bundle": "webpack --config webpack.config.js",
     "build": "yarn lint && yarn typecheck && yarn bundle",
-    "prepublishOnly": "yarn build",
-    "example": "cd example && yarn"
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
     "react": ">=16.8"
