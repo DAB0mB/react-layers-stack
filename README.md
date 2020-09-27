@@ -36,7 +36,11 @@ react-layers-stack is available in the NPM registry and can be installed using `
 
     yarn add react-layers-stack
 
+Typescript type definitions are already included.
+
 ### Docs
+
+Below is a detailed documentation regards the library's API, but I also encourage you to look at the [`types.d.ts`](/types.d.ts) file for even further clearance.
 
 #### Stack
 
@@ -136,7 +140,7 @@ const usePushMyLayer = () => {
     const pushLayer = usePushLayer();
 
     return useCallback(() => {
-        return (
+        return pushLayer(
             <MyLayer />
         , {
             keyframes: [
@@ -149,14 +153,14 @@ const usePushMyLayer = () => {
             overlay: {
                 background: '#000',
             },
-        })
+        });
     }, [pushLayer]);
 };
 ```
 
 #### usePopLayer()
 
-This hook will initialize a callback that will pop the most recent layer from the top of the stack. The layer will be popped with the the same transition that was used once it got pushed, only in reverse. The pop transition can be overridden by providing a config, similar to the one in pushPushLayer().
+This hook will initialize a callback that will pop the most recent layer from the top of the stack. The layer will be popped with the the same transition that was used once it got pushed, only in reverse. The pop transition can be overridden by providing a config, similar to the one in pushPushLayer(). Note that `config.timing.direction` of the transition will be set to `"reverse"` by default, unless specified otherwise.
 
 #### useWillFocusListener()
 
