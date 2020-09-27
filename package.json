@@ -9,9 +9,10 @@
     "url": "git+ssh://git@github.com/dab0mb/react-layers-stack.git"
   },
   "scripts": {
+    "lint": "eslint src/.",
+    "typecheck": "tsc",
     "bundle": "webpack --config webpack.config.js",
-    "lint": "eslint --fix",
-    "build": "tsc && yarn bundle",
+    "build": "yarn lint && yarn typecheck && yarn bundle",
     "prepublishOnly": "yarn build",
     "example": "cd example && yarn"
   },
@@ -46,7 +47,7 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "yarn lint"
+      "yarn eslint --fix"
     ]
   },
   "keywords": [
