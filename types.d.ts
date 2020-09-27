@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export type Layer = unknown;
 export type LayerTransitionConfig = { keyframes: Keyframe[], timing: KeyframeAnimationOptions, mask?: CSSStyleDeclaration };
@@ -8,7 +8,7 @@ export type Stack = React.FunctionComponent<{
     layersState?: [Layer[], React.SetStateAction<Layer[]>];
     style?: React.CSSProperties,
     className?: string,
-    children?: React.ReactChildren | (stack: React.ReactChildren) => React.ReactChildren;
+    children?: React.ReactChildren | ((stack: React.ReactChildren) => React.ReactChildren);
 }>;
 
 export type createLayer = (children: React.ReactChildren) => Layer;
