@@ -15,12 +15,15 @@
     "example": "cd example && yarn"
   },
   "peerDependencies": {
-    "react": "16.8"
+    "react": ">=16.8"
+  },
+  "optionalDependencies": {
+    "@types/react": ">=16.8"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.8.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.4",
     "babel-eslint": "^10.0.3",
