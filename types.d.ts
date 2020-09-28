@@ -11,7 +11,7 @@ export type Stack = React.FunctionComponent<{
     children?: React.ReactChildren | ((stack: React.ReactChildren) => React.ReactChildren);
 }>;
 
-export type createLayer = (children: React.ReactChildren) => Layer;
+export type createLayer = (children: React.ReactChildren, config?: LayerTransitionConfig) => Layer;
 
 export type usePushLayer = () => (children: React.ReactChildren, config: LayerTransitionConfig) => void;
 export type usePopLayer = () => (config?: LayerTransitionConfig) => void;
