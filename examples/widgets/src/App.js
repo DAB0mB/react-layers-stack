@@ -1,6 +1,6 @@
 import './App.css';
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { createLayer, usePushLayer, Stack } from 'react-layers-stack';
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         {stack => {
           const pushLayer = usePushLayer();
 
-          const handleClick = useCallback(() => {
+          const handleKeyPress = useCallback(() => {
             switch (layerIndex) {
             case 1:
               setLayerIndex(2);
@@ -68,11 +68,15 @@ const App = () => {
             }
           }, [layerIndex, pushLayer]);
 
-          return (
-            <span onClick={handleClick}>
-              {stack}
-            </span>
-          );
+          useEffect(() => {
+            document.addEventListener('keypress', handleKeyPress);
+
+            return () => {
+              document.removeEventListener('keypress', handleKeyPress);
+            };
+          }, [handleKeyPress]);
+
+          return stack;
         }}
       </Stack>
     </div>
@@ -99,7 +103,7 @@ const TabsMenu = ({ onTabMaxout }) => {
             const [layerIndex, setLayerIndex] = useState(1);
             const pushLayer = usePushLayer();
 
-            const handleClick = useCallback(() => {
+            const handleKeyPress = useCallback(() => {
               switch (layerIndex) {
               case 3:
                 break;
@@ -126,11 +130,15 @@ const TabsMenu = ({ onTabMaxout }) => {
               }
             }, [layerIndex, pushLayer]);
 
-            return (
-              <span onClick={handleClick}>
-                {stack}
-              </span>
-            );
+            useEffect(() => {
+              document.addEventListener('keypress', handleKeyPress);
+
+              return () => {
+                document.removeEventListener('keypress', handleKeyPress);
+              };
+            }, [handleKeyPress]);
+
+            return stack;
           }}
         </Stack>
       </div>
