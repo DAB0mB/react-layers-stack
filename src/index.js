@@ -48,7 +48,7 @@ export const Stack = ({ layersState, style, className, children }) => {
   return (
     <StackProvider layersState={[layers, setLayers]}>
       {stack => (
-        <div style={style} className={['rls-stack', className].filter(Boolean)}>
+        <div style={style} className={['rls-stack', className].filter(Boolean).join(' ')}>
           {typeof children == 'function' ? children(stack) : stack}
         </div>
       )}
