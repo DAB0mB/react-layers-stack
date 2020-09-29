@@ -1,7 +1,7 @@
 {
   "name": "react-layers-stack",
   "description": "Push and pop React view layers with transitions",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "author": "DAB0mB",
   "repository": {
