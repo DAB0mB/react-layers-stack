@@ -10,22 +10,22 @@ export const Stack = ({ layersState, style, className, children }) => {
   const [layers, setLayers] = layersState ?? useState([]);
 
   useMemo(() => {
-    let styleEl = document.getElementById('rsn-style');
+    let styleEl = document.getElementById('rls-style');
 
     if (styleEl) {
       return;
     }
 
     styleEl = document.createElement('style');
-    styleEl.id = 'rsn-style';
+    styleEl.id = 'rls-style';
     styleEl.innerHTML = `
-      .rsn-stack {
+      .rls-stack {
         position: relative;
         width: 100%;
         height: 100%;
       }
 
-      .rsn-layer {
+      .rls-layer {
         top: 0;
         right: 0;
         bottom: 0;
@@ -33,7 +33,7 @@ export const Stack = ({ layersState, style, className, children }) => {
         position: absolute;
       }
 
-      .rsn-mask {
+      .rls-mask {
         top: 0;
         right: 0;
         bottom: 0;
@@ -48,7 +48,7 @@ export const Stack = ({ layersState, style, className, children }) => {
   return (
     <StackProvider layersState={[layers, setLayers]}>
       {stack => (
-        <div style={style} className={['rsn-stack', className].filter(Boolean)}>
+        <div style={style} className={['rls-stack', className].filter(Boolean)}>
           {typeof children == 'function' ? children(stack) : stack}
         </div>
       )}

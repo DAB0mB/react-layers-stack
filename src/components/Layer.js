@@ -5,7 +5,7 @@ import { nextFrame } from '../utils';
 
 const Layer = forwardRef((props, ref) => {
   return (
-    <div ref={ref} {...props} className={['rsn-layer', props.className].filter(Boolean)} />
+    <div ref={ref} {...props} className={['rls-layer', props.className].filter(Boolean)} />
   );
 });
 
@@ -26,7 +26,7 @@ export const createLayer = (children, { keyframes, mask, timing } = {}) => {
 
   const render = (props) => (
     <React.Fragment key={key}>
-      <div className='rsn-mask' ref={maskRef} />
+      <div className='rls-mask' ref={maskRef} />
       <LayerProvider listeners={listeners}>
         <Layer ref={layer => layerRef.current = layer}>
           {childrenRef.current = childrenRef.current ?? React.cloneElement(children, props)}
