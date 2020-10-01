@@ -11,7 +11,7 @@ const Layer = forwardRef((props, ref) => {
 
 Layer.displayName = 'Layer';
 
-export const createLayer = (children, { keyframes, mask, timing } = {}) => {
+export const createLayer = (children, { keyframes, mask = {}, timing } = {}) => {
   const layerRef = createRef();
   const maskRef = createRef();
   const childrenRef = createRef();
@@ -26,7 +26,7 @@ export const createLayer = (children, { keyframes, mask, timing } = {}) => {
 
   const render = (props) => (
     <React.Fragment key={key}>
-      <div className='rls-mask' ref={maskRef} />
+      <div className='rls-mask' ref={maskRef} style={{ opacity: .5, ...mask }} />
       <LayerProvider listeners={listeners}>
         <Layer ref={layer => layerRef.current = layer}>
           {childrenRef.current = childrenRef.current ?? React.cloneElement(children, props)}
@@ -55,7 +55,7 @@ export const createLayer = (children, { keyframes, mask, timing } = {}) => {
 
       const keyframes = [
         { ...mask, opacity: 0 },
-        { ...mask, opacity: mask.opacity ?? .5 },
+        { opacity: .5, ...mask },
       ];
 
       const animation = maskEl.animate(keyframes, {
