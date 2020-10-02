@@ -1,3 +1,7 @@
+.App {
+  overflow: hidden;
+}
+
 .App, .App-stack {
   height: 100%;
   width: 100%;

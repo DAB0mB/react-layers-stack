@@ -112,7 +112,18 @@ const MyApp = () => {
     const [layers, setLayers] = useState([
         createLayer(
             <HomePage />
-        );
+        ),
+        createLayer(
+            <AboutPage />
+        , {
+            keyframes: [
+              { left: '-100%' },
+              { left: '0' },
+            ],
+            timing: {
+                duration: 500,
+            },
+        }),
     ]);
 
     return (

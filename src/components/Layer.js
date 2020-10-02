@@ -11,7 +11,17 @@ const Layer = forwardRef((props, ref) => {
 
 Layer.displayName = 'Layer';
 
-export const createLayer = (children, { keyframes, mask = {}, timing } = {}) => {
+// Assigning ref, applying last keyframe state
+const initRef = (ref, keyframes) => (el) => {
+  ref.current = el;
+
+  if (!el) return;
+  if (el.getAnimations().length) return;
+
+  el.animate(keyframes, { fill: 'forwards' });
+};
+
+export const createLayer = (children, { keyframes = [], mask = {}, timing } = {}) => {
   const layerRef = createRef();
   const maskRef = createRef();
   const childrenRef = createRef();
@@ -26,9 +36,9 @@ export const createLayer = (children, { keyframes, mask = {}, timing } = {}) => 
 
   const render = (props) => (
     <React.Fragment key={key}>
-      <div className='rls-mask' ref={maskRef} style={{ opacity: .5, ...mask }} />
+      <div className='rls-mask' ref={initRef(maskRef, [{ opacity: .5, ...mask }])} />
       <LayerProvider listeners={listeners}>
-        <Layer ref={layer => layerRef.current = layer}>
+        <Layer ref={initRef(layerRef, keyframes)}>
           {childrenRef.current = childrenRef.current ?? React.cloneElement(children, props)}
         </Layer>
       </LayerProvider>
