@@ -26,6 +26,10 @@ Modals, tabs, side menus, popovers, popups, dropdowns, notifications; These are 
 
 This library is currently only available for the web, and since it uses Web Animations API it's recommended to load a [polyfill](https://github.com/web-animations/web-animations-js) for comparability reasons with older browsers. This library is also very new and may have some missing features. Please, don't hesitate and open a ticket in the [issues](https://github.com/DAB0mB/react-layers-stack/issues) section if you encounter one, and I will address it as soon as I can.
 
+### SSR
+
+The library does work with SSR frameworks e.g. Gatsby or Next.JS, just make sure to import `react-layers-stack/style.css` file additionally.
+
 ### Examples
 
 This repo contains example React apps under the [examples](/examples) dir. To run an example app, first make sure it's initialized by running `yarn` and then you can run it using `yarn start`.
@@ -47,6 +51,7 @@ Below is a detailed documentation regards the library's API, but I also encourag
 This is the main stack container that will define the boundaries for our layers and provide them with the necessary context. A React element of this component type HAS to be created if we want to use react-layers-stack and its React hooks. Initialization is as simple as the following:
 
 ```js
+import 'react-layers-stack/style.css';
 import { Stack } from 'react-layers-stack';
 
 const MyApp = () => {
@@ -59,6 +64,7 @@ const MyApp = () => {
 By providing a render function as children, you can also define a fixed layout that will keep displaying on top of layers, e.g. a header of a navigation bar:
 
 ```js
+import 'react-layers-stack/style.css';
 import { Stack } from 'react-layers-stack';
 
 const MyApp = () => {
@@ -78,6 +84,7 @@ const MyApp = () => {
 Internally, the render function is used as the body of a separate component, which means that react-layers-stack hooks can also be used:
 
 ```js
+import 'react-layers-stack/style.css';
 import { Stack, usePopLayer } from 'react-layers-stack';
 
 const MyApp = () => {
@@ -106,6 +113,7 @@ const MyApp = () => {
 You can also initialize a Stack with a predefined layers state like the following:
 
 ```js
+import 'react-layers-stack/style.css';
 import { Stack, createLayer } from 'react-layers-stack';
 
 const MyApp = () => {
@@ -145,6 +153,7 @@ This hook will initialize a callback that will push a new layer on top of the st
 Here's an example:
 
 ```js
+import 'react-layers-stack/style.css';
 import { usePushLayer } from 'react-layers-stack';
 
 const usePushMyLayer = () => {
@@ -161,7 +170,7 @@ const usePushMyLayer = () => {
             timing: {
                 duration: 500,
             },
-            overlay: {
+            mask: {
                 background: '#000',
             },
         });

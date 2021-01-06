@@ -1,3 +1,4 @@
+import 'react-layers-stack/style.css';
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';

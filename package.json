@@ -1,7 +1,7 @@
 {
   "name": "react-layers-stack",
   "description": "Push and pop React view layers with transitions",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "DAB0mB",
   "repository": {
@@ -34,6 +34,7 @@
     "eslint-plugin-react": "^7.18.3",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
+    "raw-loader": "^4.0.2",
     "typescript": "^4.0.3",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",

@@ -5,7 +5,7 @@ module.exports = {
   mode: 'production',
   devtool: 'sourcemap',
   entry: {
-    index: path.resolve(__dirname, 'src/index'),
+    index: path.resolve(__dirname, 'src/index.js'),
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
@@ -24,8 +24,12 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'json-loader',
-      }
+        use: 'json-loader',
+      },
+      {
+        test: /\.css$/i,
+        use: ['raw-loader']
+      },
     ]
   },
   externals: [
