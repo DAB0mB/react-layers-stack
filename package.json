@@ -54,6 +54,5 @@
     "react",
     "navigation",
     "animations"
-  ],
-  "types": "./types.d.ts"
+  ]
 }
