@@ -5,15 +5,15 @@ export type LayerTransitionConfig = { keyframes: Keyframe[], timing: KeyframeAni
 export type EventListenerHook = (listener: () => any, deps?: readonly any[]) => void;
 
 export const Stack: React.FunctionComponent<{
-    layersState?: [Layer[], React.SetStateAction<Layer[]>];
-    style?: React.CSSProperties,
-    className?: string,
-    children?: React.ReactChildren | ((stack: React.ReactChildren) => React.ReactChildren);
+	    layersState?: [Layer[], React.Dispatch<React.SetStateAction<Layer[]>>];
+	        style?: React.CSSProperties,
+		    className?: string,
+		        children?: React.ReactChild | ((stack: React.ReactChild) => React.ReactChild);
 }>;
 
-export const createLayer: (children: React.ReactChildren, config?: LayerTransitionConfig) => Layer;
+export const createLayer: (children: React.ReactChild, config?: LayerTransitionConfig) => Layer;
 
-export const usePushLayer: () => (children: React.ReactChildren, config: LayerTransitionConfig) => void;
+export const usePushLayer: () => (children: React.ReactChild, config: LayerTransitionConfig) => void;
 export const usePopLayer: () => (config?: LayerTransitionConfig) => void;
 
 export const useWillFocusListener:  EventListenerHook;
